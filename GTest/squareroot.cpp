@@ -1,6 +1,7 @@
 #include <math.h>
+#include <string>
 
-double squareRoot(const double a) {
+double SquareRoot(const double a) {
     double b = sqrt(a);
     if(b != b) { // nan check
         return -1.0;
