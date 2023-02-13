@@ -1,0 +1,40 @@
+convolution is the process of filtering key features from an input image.
+we use a kernel to multiply throughout the input matrix resulting in a feature map as output.
+
+optimizers are used to update the attributes of a nn such as weights in order to minimize the loss function.
+
+Loss function is used to evaulte the predicted value of a model.
+It calculates the loss by evaluating the predicted value with the target value.
+
+Tensors is a ds in Pytorch. It is similar to a matrix or an array and can be run in gpu's.
+
+Activation function decides whether a neuron should be activated or not by calculating the weighted sum and further adding bias to it. The purpose of the activation function is to introduce non-linearity into the output of a neuron. 
+
+Forward propagation is when the input data passes through the model from the input layer to the hidden and then the output layer and provides a prediction.
+
+Backward propagation calculates the gradient of the loss function with respect to the network weight.
+
+SGD picks a random set of sample data to calculate the gradient for each iteration.
+
+in gd we take larger steps in one direction and smaller steps in the other direction which slows down the algorithm.
+momentum limits the oscillation to one direction
+increasing the learning speed.
+
+Rmsprop limits the oscillations that move vertically. we can increase the lr and our algo would take larger steps in horiz direction , converging faster.
+
+Adam controls the rate of gradient descent in such a way that there is minimum oscillation when it reaches the global minimum
+
+Pytorch is an open source ml framework used for building deep nn.
+
+maxpool is used to abstract or compress the input data/image.
+
+dropout is where each node has a 0.5 chance of being disabled.Can help fix overfitting as it would reduce the dependency over specific nodes.
+
+MSE Loss -> calculates squared avg of target and pred values.
+
+CROSS ENTROPY Loss->used in binary classification.
+good for models that give prob value between 0 and 1.
+
+ONNX is an intermediate ml framework which can be used to convert a pre trained model from one framework to another.
+
+ONNX rt is used for performing inference to onnx models.
