@@ -1,43 +1,54 @@
 import json
 
-f = open('trace_inception.json')
-
-data = json.load(f)
-
+#input file path
+inputFile = open('trace_inception.json')
+data = json.load(inputFile)
 lst = data['traceEvents']
-
+#Filter JSON result with keys
 keys = ['name','dur']
-newlst = []
+omitNames = ['NoOp', '_Arg', '_Retval']
+filteredLst = []
 for d in lst:
-  newres = {}
+  filteredRes = {}
+  if d['name'] in omitNames:
+    continue
   if 'dur' in d:
     for key in keys:
-      newres[key]=d[key]
-    newlst.append(newres)
+      filteredRes[key]=d[key]
+    filteredLst.append(filteredRes)
   else:
     continue
-
-newlst1={}
-total = 0
-for d in newlst:
-  if d['name'] not in newlst1.keys():
-    newlst1[d['name']]=0
-  newlst1[d['name']]+=int(d['dur'])
-  total+=int(d['dur'])
-
-newlst1=dict(sorted(newlst1.items(), key=lambda x:x[1], reverse=True))
-total=total/1000
-tmplst = newlst1.copy()
-for key in newlst1:
-  newlst1[key]/=1000
-  newlst1[key]=str(newlst1[key])+'ms'	    
-print(newlst1)
-
+#Calculate total time taken by each layer
+resLst={}
+totalTime = 0
+for d in filteredLst:
+  if d['name'] not in resLst.keys():
+    resLst[d['name']]=0
+  resLst[d['name']]+=int(d['dur'])
+  totalTime+=int(d['dur'])
+#Sorting data in descending order
+resLst=dict(sorted(resLst.items(), key=lambda x:x[1], reverse=True))
+totalTime=totalTime/1000
+tmplst = resLst.copy()
+for key in resLst:
+  resLst[key]/=1000
+  resLst[key]=str(resLst[key])+'ms'
+#Display resLst	
+print('==============================================================')
+print('Time taken by each layer')
+print('==============================================================')
+for key in resLst:
+  print(key,' :',resLst[key])
+  
+#Calculate percentage taken by each layer
+print('==============================================================')
 print('Percentage List for each layer')
+print('==============================================================')
 for key in tmplst:
   tmplst[key]/=1000
-  print(key,' :',(tmplst[key]/total)*100,'%')
+  print(key,' :',round((tmplst[key]/totalTime)*100, 2),'%')
+print('==============================================================')
+print('Total Time Taken: ',totalTime,'ms')
+print('==============================================================')
 
-print('Total Time Taken: ',total,'ms')
-
-f.close()
+inputFile.close()
