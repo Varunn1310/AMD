@@ -1,149 +1,184 @@
-def compute_detection_ap(results, gts, thresh, overlap_thresh, use_07_metric=False):
-    """
-    Evaluate detection results
-    :param results: image_name class_label score xmin ymin xmax ymax
-    :param gts: image_name class_label xmin ymin xmax ymax
-    :param thresh: only bboxes whose confidence score under thresh are used
-    :param overlap_thresh: threshold of IOU ratio to determine a match bbox
-    :param use_07_metric: uses the VOC 07 11 point method to compute VOC AP given precision and recall
-    :return: recall, precision, ap
-    """
-    # load gt
-    class_gts = {}
-    class_num_positive = {}
-    image_names = set()
-    for gt in gts:
-        gt_info = gt.split(' ')
-        if len(gt_info) != 6 and len(gt_info) != 7:
-            print('wrong ground truth info: ' + gt_info[0])
-            return 0
-        image_name = gt_info[0]
-        class_name = gt_info[1]
-        bbox = [float(item) for item in gt_info[2:6]]
-        if len(gt_info) == 6:
-            difficult = False
-        else:
-            difficult = bool(int(gt_info[-1]))
+# Copyright 2019 Xilinx Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-        if class_name not in class_gts.keys():
-            class_gts[class_name] = {}
-            class_num_positive[class_name] = 0
-        if image_name not in class_gts[class_name].keys():
-            class_gts[class_name][image_name] = {'bbox': np.array([bbox]),
-                                                 'hit': [False],
-                                                 'difficult': [difficult]}
-        else:
-            class_gts[class_name][image_name]['bbox'] = np.vstack((class_gts[class_name][image_name]['bbox'],
-                                                                   np.array(bbox)))
-            class_gts[class_name][image_name]['hit'].append(False)
-            class_gts[class_name][image_name]['difficult'].append(difficult)
-        class_num_positive[class_name] += int(True ^ difficult)
-        image_names.add(image_name)
-    class_names = class_gts.keys()
 
-    # read dets
-    class_dets = {}
-    for result in results:
-        result_info = result.split(' ')
-        if len(result_info) != 7:
-            print('wrong detections info: ' + result_info[0])
-            return 0
-        image_name = result_info[0]
-        class_name = result_info[1]
-        bbox = [float(item) for item in result_info[2:]]
-        if bbox[0] <= thresh:
-            continue
-        if class_name not in class_names:
-            continue
-        if class_name not in class_dets.keys():
-            class_dets[class_name] = {'images': [],
-                                      'scores': [],
-                                      'bboxes': []}
-        class_dets[class_name]['images'].append(image_name)
-        class_dets[class_name]['scores'].append(bbox[0])
-        class_dets[class_name]['bboxes'].append(bbox[1:])
 
-    ap = {}
-    precision = {}
-    recall = {}
-    count = 0
-    start=time.time()
-    for class_name in class_names:
-        if class_name not in class_dets.keys():
-            ap[class_name] = 0
-            recall[class_name] = 0
-            precision[class_name] = 0
-            continue
+# MIT License
+#
+# Copyright (c) 2018 qqwweee
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
-        gt_images = class_gts[class_name]
-        num_positive = class_num_positive[class_name]
 
-        det_images = class_dets[class_name]['images']
-        det_scores = np.array(class_dets[class_name]['scores'])
-        det_bboxes = np.array(class_dets[class_name]['bboxes'])
 
-        # sort by confidence
-        sorted_index = np.argsort(-det_scores)
-        det_bboxes = det_bboxes[sorted_index, :]
-        det_images = [det_images[x] for x in sorted_index]
+import os
+import cv2
+import numpy as np
+from tqdm import tqdm
+import tensorflow.compat.v1 as tf
+import time
+from yolo3_predictor import yolo_predictor
+from config import Yolov3VOCConfig as Config
+tf.disable_v2_behavior()
 
-        # go down dets and mark TPs and FPs
-        num_dets = len(det_images)
-        true_positive = np.zeros(num_dets)
-        false_positive = np.zeros(num_dets)
-        for idx in range(num_dets):
-            if det_images[idx] not in gt_images.keys():
-                false_positive[idx] = 1
-                continue
+tf.app.flags.DEFINE_string('input_graph', '../float_model/yolov3_voc.pb',
+                           'TensorFlow \'GraphDef\' file to load.')
+tf.app.flags.DEFINE_string('eval_image_path', '',
+                           'The directory where put the eval images')
+tf.app.flags.DEFINE_string('eval_image_list', '',
+                           'file has validation images list')
+tf.app.flags.DEFINE_string('input_node', 'input_1', 'input node of pb model')
+tf.app.flags.DEFINE_string(
+    'output_node', 'conv2d_59/BiasAdd,conv2d_67/BiasAdd,conv2d_75/BiasAdd',
+    'ouput node of pb model')
+tf.app.flags.DEFINE_integer('input_height', 416, 'input height of pb model')
+tf.app.flags.DEFINE_integer('input_width', 416, 'input width of pb model')
+tf.app.flags.DEFINE_string('result_file', 'voc2007_pred_results.txt',
+                           'The directory of output results')
+tf.app.flags.DEFINE_boolean('use_quantize', False, 'quantize or not')
+tf.app.flags.DEFINE_string('gpus', '0',
+                           'The gpus used for running evaluation.')
 
-            gt_bboxes = gt_images[det_images[idx]]['bbox'].astype(float)
-            gt_hit = gt_images[det_images[idx]]['hit']
-            git_difficult = gt_images[det_images[idx]]['difficult']
-            det_bbox = det_bboxes[idx, :].astype(float)
-            overlaps_max = -np.inf
+FLAGS = tf.app.flags.FLAGS
+os.environ['CUDA_VISIBLE_DEVICES'] = FLAGS.gpus
+time_consume = 0
+latency = 0
 
-            if gt_bboxes.size > 0:
-                # compute overlaps
-                # intersection
-                inter_xmin = np.maximum(gt_bboxes[:, 0], det_bbox[0])
-                inter_ymin = np.maximum(gt_bboxes[:, 1], det_bbox[1])
-                inter_xmax = np.minimum(gt_bboxes[:, 2], det_bbox[2])
-                inter_ymax = np.minimum(gt_bboxes[:, 3], det_bbox[3])
-                inter_width = np.maximum(inter_xmax - inter_xmin + 1., 0.)
-                inter_height = np.maximum(inter_ymax - inter_ymin + 1., 0.)
-                inters = inter_width * inter_height
+if FLAGS.use_quantize:
+    from tensorflow.contrib import decent_q
 
-                # union
-                unions = ((det_bbox[2] - det_bbox[0] + 1.) * (det_bbox[3] - det_bbox[1] + 1.) +
-                          (gt_bboxes[:, 2] - gt_bboxes[:, 0] + 1.) * (gt_bboxes[:, 3] - gt_bboxes[:, 1] + 1.) - inters)
+def letterbox_image(image, size):
+    '''resize image with unchanged aspect ratio using padding'''
+    ih, iw, _ = image.shape
+    w, h = size
+    scale = min(w/iw, h/ih)
+    nw = int(iw*scale)
+    nh = int(ih*scale)
 
-                overlaps = inters / unions
-                overlaps_max = np.max(overlaps)
-                jmax = np.argmax(overlaps)
+    image = cv2.resize(image, (nw,nh), interpolation=cv2.INTER_LINEAR)
+    new_image = np.ones((h,w,3), np.uint8) * 128
+    h_start = (h-nh)//2
+    w_start = (w-nw)//2
+    new_image[h_start:h_start+nh, w_start:w_start+nw, :] = image
+    return new_image
 
-            if overlaps_max > overlap_thresh:
-                if not git_difficult[jmax]:
-                    if not gt_hit[jmax]:
-                        true_positive[idx] = 1.
-                        gt_hit[jmax] = 1
-                    else:
-                        false_positive[idx] = 1.
-            else:
-                false_positive[idx] = 1.
-            count+=1
 
-        # compute precision recall
-        false_positive = np.cumsum(false_positive)
-        true_positive = np.cumsum(true_positive)
-        recall[class_name] = true_positive / float(num_positive)
-        precision[class_name] = true_positive / np.maximum(true_positive + false_positive, np.finfo(np.float64).eps)
-        ap[class_name] = voc_ap(recall[class_name], precision[class_name], use_07_metric)
-    end=time.time()
-    throughput = count*len(class_names)/(end-start)
-    print('evaluate ' + str(len(image_names)) + ' images')
+def write_items_to_file(image_id, items, fw):
+    for item in items:
+        fw.write(image_id + " " + " ".join([str(comp) for comp in item]) + "\n")
+
+
+def get_detection(image, model_image_size, class_names):
+    image_h, image_w, _ = image.shape
+    #print('Mdel Image size :',model_image_size)
+    #print('IMage height :',image_h)
+    #print('IMage width :',image_w)
+    # image preprocessing
+    if model_image_size != (None, None):
+        assert model_image_size[0]%32 == 0, 'Multiples of 32 required'
+        assert model_image_size[1]%32 == 0, 'Multiples of 32 required'
+        #res_tuple = tuple(32)+tuple(reversed(model_image_size))
+        #print('tuple reverse size :',res_tuple)
+        boxed_image = letterbox_image(image, tuple(reversed(model_image_size)))
+    else:
+        new_image_size = (image_w - (image_w % 32), image_h - (image_h % 32))
+        boxed_image = letterbox_image(image, new_image_size)
+    image_data = np.array(boxed_image, dtype='float32')
+    image_data /= 255.
+    image_data = np.expand_dims(image_data, 0)  # Add batch dimension.
+    #print('Input shape: ',image_data.shape)
+    #print('IMage.shape: ',image.shape)
+    start_time = time.time()
+    out_boxes, out_scores, out_classes, out_y = sess.run(
+        [pred_boxes, pred_scores, pred_classes, output_y],
+        feed_dict={input_x: image_data, input_image_shape: (image_h, image_w)})
+    global time_consume
+    global latency
+    latency = time.time() - start_time 
+    time_consume += time.time() - start_time
+
+    # convert the result to label format
+    items = []
+    for i, c in reversed(list(enumerate(out_classes))):
+        predicted_class = class_names[c]
+        box = out_boxes[i]
+        score = out_scores[i]
+
+        top, left, bottom, right = box
+        top = max(0, np.floor(top + 0.5).astype('int32'))
+        left = max(0, np.floor(left + 0.5).astype('int32'))
+        bottom = min(image_h, np.floor(bottom + 0.5).astype('int32'))
+        right = min(image_w, np.floor(right + 0.5).astype('int32'))
+        item  = [predicted_class, score, left, top, right, bottom]
+        items.append(item)
+
+    return items
+
+
+if __name__ == "__main__":
+
+    config = Config()
+    class_names = config.classes
+    predictor = yolo_predictor(config)
+    sess = tf.compat.v1.Session()
+    with tf.io.gfile.GFile(FLAGS.input_graph, 'rb') as f: # file I/O
+        graph_def = tf.compat.v1.GraphDef()
+        graph_def.ParseFromString(f.read()) # get graph_def from file
+        sess.graph.as_default()
+        tf.import_graph_def(graph_def, name='')  # import graph
+    sess.run(tf.compat.v1.global_variables_initializer())
+
+    input_x = sess.graph.get_tensor_by_name(FLAGS.input_node + ':0')
+    output_y = []
+    for node in FLAGS.output_node.split(","):
+        output_y.append(sess.graph.get_tensor_by_name(node + ":0"))
+
+    input_image_shape = tf.compat.v1.placeholder(tf.int32, shape=(2))
+    pred_boxes, pred_scores, pred_classes = predictor.predict(output_y, input_image_shape)
+    iterations = 0
+
+    with open(FLAGS.eval_image_list) as fr:
+        lines = fr.readlines()
+    fw = open(FLAGS.result_file, "w")
+    for line in tqdm(lines):
+        img_id = line.strip()
+        img_path = os.path.join(FLAGS.eval_image_path, img_id + '.jpg')
+        image = cv2.imread(img_path)
+        image = image[...,::-1] # BGR -> RGB
+        # items = get_detection(image, (config.height, config.width), class_names)
+        #print('Main IMg shape :',image.shape)
+        items = get_detection(image, (FLAGS.input_height, FLAGS.input_width), class_names)
+        iterations+=1
+        write_items_to_file(img_id, items, fw)
     print('============PERFORMANCE RESULTS======================')
-    print('Latency is {:.4f}s'.format(end-start))
-    print('Throughput is {:.4f}'.format(throughput))
+    print("Latency :",latency,"s")
+    print("Throughput :",iterations/time_consume)
     print('=====================================================')
-    return recall, precision, ap
-
+    fw.close()
