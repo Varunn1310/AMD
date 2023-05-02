@@ -1,0 +1,267 @@
+2023-05-02 16:02:26.426000: I tensorflow/core/platform/cpu_feature_guard.cc:197] This TensorFlow binary is optimized with Zen Deep Neural Network Library (ZenDNN) to use the following CPU instructions in performance-critical operations:  AVX512F AVX512_VNNI
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-02 16:02:26.520030: I tensorflow/core/util/util.cc:203] ZenDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ZENDNN_OPTS=0`.
+WARNING:tensorflow:From /home/mcw/anaconda3/envs/tf_yolo_env/lib/python3.9/site-packages/tensorflow/python/compat/v2_compat.py:107: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2023-05-02 16:02:27.246142: I tensorflow/core/platform/cpu_feature_guard.cc:197] This TensorFlow binary is optimized with Zen Deep Neural Network Library (ZenDNN) to use the following CPU instructions in performance-critical operations:  AVX512F AVX512_VNNI
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-02 16:02:28.003697: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:354] MLIR V1 optimization pass is not enabled
+2023-05-02 16:02:28.013668: I tensorflow/core/util/dump_graph.cc:206] Dumped Graph to ./ZENDNN_after_rewrite.pbtxt
+[FWK:I][0.000005] ZenLayoutRewritePass::ZenOpRewritePass: No opportunity for Zen op conversion found
+[FWK:I][0.000018] ZenLayoutRewritePass::ZenOpRewritePass: No instance of FuseBatchNorm found.
+[FWK:I][0.000020] ZenLayoutRewritePass::ZenOpRewritePass: No reorder attributes were updated.
+[FWK:I][10.927384] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.927489] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927527] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927562] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927597] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927631] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927673] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927707] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927742] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927774] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927807] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927839] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927873] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927906] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927938] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.927969] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928000] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928032] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928063] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928094] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928128] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928160] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928191] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928223] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928282] ZenLayoutRewritePass::ZenOpUpdate: Node _FusedConv2D rewritten with ZenOp _ZenFusedConv2D
+[FWK:I][10.928331] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul with ZenOp Mul
+[FWK:I][10.928363] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928394] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.928424] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928453] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928486] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.928517] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.928549] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.928579] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928609] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.928638] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928667] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928702] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928736] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.928769] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.928810] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.928904] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.928942] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.928980] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.929018] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929062] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node up_sampling2d_1/mul with ZenOp Mul
+[FWK:I][10.929107] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.929165] ZenLayoutRewritePass::ZenOpUpdate: Node _FusedConv2D rewritten with ZenOp _ZenFusedConv2D
+[FWK:I][10.929203] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929238] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929274] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929310] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.929345] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.929379] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.929413] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.929447] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.929481] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.929516] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.929555] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.929590] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.929625] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929659] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.929694] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929733] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node up_sampling2d_2/mul with ZenOp Mul
+[FWK:I][10.929771] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.929828] ZenLayoutRewritePass::ZenOpUpdate: Node _FusedConv2D rewritten with ZenOp _ZenFusedConv2D
+[FWK:I][10.929865] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929901] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929937] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.929972] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.930007] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.930041] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.930075] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.930110] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.930144] ZenLayoutRewritePass::ZenOpUpdate: Node Sub rewritten with ZenOp ZenSub
+[FWK:I][10.930179] ZenLayoutRewritePass::ZenOpUpdate: Node AddV2 rewritten with ZenOp ZenAddV2
+[FWK:I][10.930219] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.930253] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.930288] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.930326] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.930367] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.930402] ZenLayoutRewritePass::ZenOpUpdate: Node Mul rewritten with ZenOp ZenMul
+[FWK:I][10.930437] ZenLayoutRewritePass::ZenOpUpdate: Node Reshape rewritten with ZenOp ZenReshape
+[FWK:I][10.930499] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.930545] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_30 with ZenOp Mul
+[FWK:I][10.930586] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_31 with ZenOp Mul
+[FWK:I][10.930630] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_32 with ZenOp Mul
+[FWK:I][10.930667] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_33 with ZenOp Mul
+[FWK:I][10.930704] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_34 with ZenOp Mul
+[FWK:I][10.930740] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_35 with ZenOp Mul
+[FWK:I][10.930777] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_36 with ZenOp Mul
+[FWK:I][10.930813] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_37 with ZenOp Mul
+[FWK:I][10.930851] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_38 with ZenOp Mul
+[FWK:I][10.930888] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_19 with ZenOp Mul
+[FWK:I][10.930926] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_21 with ZenOp Mul
+[FWK:I][10.930962] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_22 with ZenOp Mul
+[FWK:I][10.930999] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_23 with ZenOp Mul
+[FWK:I][10.931035] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_24 with ZenOp Mul
+[FWK:I][10.931072] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_25 with ZenOp Mul
+[FWK:I][10.931108] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_26 with ZenOp Mul
+[FWK:I][10.931146] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_29 with ZenOp Mul
+[FWK:I][10.931182] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_27 with ZenOp Mul
+[FWK:I][10.931230] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.931267] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_28 with ZenOp Mul
+[FWK:I][10.931313] ZenLayoutRewritePass::ZenOpUpdate: Node ConcatV2 rewritten with ZenOp ZenConcatV2
+[FWK:I][10.931893] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul with ZenOp Mul
+[FWK:I][10.931943] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node up_sampling2d_1/mul with ZenOp Mul
+[FWK:I][10.931998] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node up_sampling2d_2/mul with ZenOp Mul
+[FWK:I][10.932057] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_30 with ZenOp Mul
+[FWK:I][10.932094] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_31 with ZenOp Mul
+[FWK:I][10.932131] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_32 with ZenOp Mul
+[FWK:I][10.932167] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_33 with ZenOp Mul
+[FWK:I][10.932204] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_34 with ZenOp Mul
+[FWK:I][10.932241] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_35 with ZenOp Mul
+[FWK:I][10.932278] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_36 with ZenOp Mul
+[FWK:I][10.932314] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_37 with ZenOp Mul
+[FWK:I][10.932351] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_38 with ZenOp Mul
+[FWK:I][10.932387] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_19 with ZenOp Mul
+[FWK:I][10.932426] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_21 with ZenOp Mul
+[FWK:I][10.932462] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_22 with ZenOp Mul
+[FWK:I][10.932498] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_23 with ZenOp Mul
+[FWK:I][10.932535] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_24 with ZenOp Mul
+[FWK:I][10.932571] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_25 with ZenOp Mul
+[FWK:I][10.932608] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_26 with ZenOp Mul
+[FWK:I][10.932663] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_28 with ZenOp Mul
+[FWK:I][10.932704] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_29 with ZenOp Mul
+[FWK:I][10.932744] ZenLayoutRewritePass::ZenOpUpdate: Failed to rewrite node mul_27 with ZenOp Mul
+[FWK:I][10.932747] ZenLayoutRewritePass::ZenOpRewritePass: No instance of FuseBatchNorm found.
+[FWK:I][10.932787] ZenLayoutRewritePass::GetReorderFlags: At concat_2 ZenConcatV2, non-Zen input - Cast_4 Cast
+[FWK:I][10.932790] ZenLayoutRewritePass::GetReorderFlags: At add_1/add ZenAddV2, non-Zen output - zero_padding2d_2/Pad Pad
+[FWK:I][10.932791] ZenLayoutRewritePass::GetReorderFlags: At add_1/add ZenAddV2, non-Zen input - leaky_re_lu_2/LeakyRelu _FusedConv2D
+[FWK:I][10.932792] ZenLayoutRewritePass::GetReorderFlags: At add_2/add ZenAddV2, non-Zen output - leaky_re_lu_8/LeakyRelu _FusedConv2D
+[FWK:I][10.932793] ZenLayoutRewritePass::GetReorderFlags: At add_2/add ZenAddV2, non-Zen input - leaky_re_lu_5/LeakyRelu _FusedConv2D
+[FWK:I][10.932794] ZenLayoutRewritePass::GetReorderFlags: At add_3/add ZenAddV2, non-Zen output - zero_padding2d_3/Pad Pad
+[FWK:I][10.932795] ZenLayoutRewritePass::GetReorderFlags: At add_3/add ZenAddV2, non-Zen input - leaky_re_lu_9/LeakyRelu _FusedConv2D
+[FWK:I][10.932796] ZenLayoutRewritePass::GetReorderFlags: At add_4/add ZenAddV2, non-Zen output - leaky_re_lu_13/LeakyRelu _FusedConv2D
+[FWK:I][10.932797] ZenLayoutRewritePass::GetReorderFlags: At add_4/add ZenAddV2, non-Zen input - leaky_re_lu_10/LeakyRelu _FusedConv2D
+[FWK:I][10.932798] ZenLayoutRewritePass::GetReorderFlags: At add_5/add ZenAddV2, non-Zen output - leaky_re_lu_15/LeakyRelu _FusedConv2D
+[FWK:I][10.932800] ZenLayoutRewritePass::GetReorderFlags: At add_5/add ZenAddV2, non-Zen input - leaky_re_lu_14/LeakyRelu _FusedConv2D
+[FWK:I][10.932801] ZenLayoutRewritePass::GetReorderFlags: At add_6/add ZenAddV2, non-Zen output - leaky_re_lu_17/LeakyRelu _FusedConv2D
+[FWK:I][10.932802] ZenLayoutRewritePass::GetReorderFlags: At add_6/add ZenAddV2, non-Zen input - leaky_re_lu_16/LeakyRelu _FusedConv2D
+[FWK:I][10.932803] ZenLayoutRewritePass::GetReorderFlags: At add_7/add ZenAddV2, non-Zen output - leaky_re_lu_19/LeakyRelu _FusedConv2D
+[FWK:I][10.932804] ZenLayoutRewritePass::GetReorderFlags: At add_7/add ZenAddV2, non-Zen input - leaky_re_lu_18/LeakyRelu _FusedConv2D
+[FWK:I][10.932805] ZenLayoutRewritePass::GetReorderFlags: At add_8/add ZenAddV2, non-Zen output - leaky_re_lu_21/LeakyRelu _FusedConv2D
+[FWK:I][10.932806] ZenLayoutRewritePass::GetReorderFlags: At add_8/add ZenAddV2, non-Zen input - leaky_re_lu_20/LeakyRelu _FusedConv2D
+[FWK:I][10.932807] ZenLayoutRewritePass::GetReorderFlags: At add_9/add ZenAddV2, non-Zen output - leaky_re_lu_23/LeakyRelu _FusedConv2D
+[FWK:I][10.932809] ZenLayoutRewritePass::GetReorderFlags: At add_9/add ZenAddV2, non-Zen input - leaky_re_lu_22/LeakyRelu _FusedConv2D
+[FWK:I][10.932810] ZenLayoutRewritePass::GetReorderFlags: At add_10/add ZenAddV2, non-Zen output - leaky_re_lu_25/LeakyRelu _FusedConv2D
+[FWK:I][10.932811] ZenLayoutRewritePass::GetReorderFlags: At add_10/add ZenAddV2, non-Zen input - leaky_re_lu_24/LeakyRelu _FusedConv2D
+[FWK:I][10.932812] ZenLayoutRewritePass::GetReorderFlags: At add_11/add ZenAddV2, non-Zen output - zero_padding2d_4/Pad Pad
+[FWK:I][10.932813] ZenLayoutRewritePass::GetReorderFlags: At add_11/add ZenAddV2, non-Zen input - leaky_re_lu_26/LeakyRelu _FusedConv2D
+[FWK:I][10.932814] ZenLayoutRewritePass::GetReorderFlags: At add_12/add ZenAddV2, non-Zen output - leaky_re_lu_30/LeakyRelu _FusedConv2D
+[FWK:I][10.932815] ZenLayoutRewritePass::GetReorderFlags: At add_12/add ZenAddV2, non-Zen input - leaky_re_lu_27/LeakyRelu _FusedConv2D
+[FWK:I][10.932816] ZenLayoutRewritePass::GetReorderFlags: At add_13/add ZenAddV2, non-Zen output - leaky_re_lu_32/LeakyRelu _FusedConv2D
+[FWK:I][10.932817] ZenLayoutRewritePass::GetReorderFlags: At add_13/add ZenAddV2, non-Zen input - leaky_re_lu_31/LeakyRelu _FusedConv2D
+[FWK:I][10.932818] ZenLayoutRewritePass::GetReorderFlags: At add_14/add ZenAddV2, non-Zen output - leaky_re_lu_34/LeakyRelu _FusedConv2D
+[FWK:I][10.932825] ZenLayoutRewritePass::GetReorderFlags: At add_14/add ZenAddV2, non-Zen input - leaky_re_lu_33/LeakyRelu _FusedConv2D
+[FWK:I][10.932826] ZenLayoutRewritePass::GetReorderFlags: At add_15/add ZenAddV2, non-Zen output - leaky_re_lu_36/LeakyRelu _FusedConv2D
+[FWK:I][10.932827] ZenLayoutRewritePass::GetReorderFlags: At add_15/add ZenAddV2, non-Zen input - leaky_re_lu_35/LeakyRelu _FusedConv2D
+[FWK:I][10.932828] ZenLayoutRewritePass::GetReorderFlags: At add_16/add ZenAddV2, non-Zen output - leaky_re_lu_38/LeakyRelu _FusedConv2D
+[FWK:I][10.932829] ZenLayoutRewritePass::GetReorderFlags: At add_16/add ZenAddV2, non-Zen input - leaky_re_lu_37/LeakyRelu _FusedConv2D
+[FWK:I][10.932830] ZenLayoutRewritePass::GetReorderFlags: At add_17/add ZenAddV2, non-Zen output - leaky_re_lu_40/LeakyRelu _FusedConv2D
+[FWK:I][10.932831] ZenLayoutRewritePass::GetReorderFlags: At add_17/add ZenAddV2, non-Zen input - leaky_re_lu_39/LeakyRelu _FusedConv2D
+[FWK:I][10.932832] ZenLayoutRewritePass::GetReorderFlags: At add_18/add ZenAddV2, non-Zen output - leaky_re_lu_42/LeakyRelu _FusedConv2D
+[FWK:I][10.932834] ZenLayoutRewritePass::GetReorderFlags: At add_18/add ZenAddV2, non-Zen input - leaky_re_lu_41/LeakyRelu _FusedConv2D
+[FWK:I][10.932834] ZenLayoutRewritePass::GetReorderFlags: At add_19/add ZenAddV2, non-Zen output - zero_padding2d_5/Pad Pad
+[FWK:I][10.932836] ZenLayoutRewritePass::GetReorderFlags: At add_19/add ZenAddV2, non-Zen input - leaky_re_lu_43/LeakyRelu _FusedConv2D
+[FWK:I][10.932837] ZenLayoutRewritePass::GetReorderFlags: At add_20/add ZenAddV2, non-Zen output - leaky_re_lu_47/LeakyRelu _FusedConv2D
+[FWK:I][10.932838] ZenLayoutRewritePass::GetReorderFlags: At add_20/add ZenAddV2, non-Zen input - leaky_re_lu_44/LeakyRelu _FusedConv2D
+[FWK:I][10.932839] ZenLayoutRewritePass::GetReorderFlags: At add_21/add ZenAddV2, non-Zen output - leaky_re_lu_49/LeakyRelu _FusedConv2D
+[FWK:I][10.932840] ZenLayoutRewritePass::GetReorderFlags: At add_21/add ZenAddV2, non-Zen input - leaky_re_lu_48/LeakyRelu _FusedConv2D
+[FWK:I][10.932841] ZenLayoutRewritePass::GetReorderFlags: At add_22/add ZenAddV2, non-Zen output - leaky_re_lu_51/LeakyRelu _FusedConv2D
+[FWK:I][10.932842] ZenLayoutRewritePass::GetReorderFlags: At add_22/add ZenAddV2, non-Zen input - leaky_re_lu_50/LeakyRelu _FusedConv2D
+[FWK:I][10.932843] ZenLayoutRewritePass::GetReorderFlags: At add_23/add ZenAddV2, non-Zen output - leaky_re_lu_53/LeakyRelu _FusedConv2D
+[FWK:I][10.932844] ZenLayoutRewritePass::GetReorderFlags: At add_23/add ZenAddV2, non-Zen input - leaky_re_lu_52/LeakyRelu _FusedConv2D
+[FWK:I][10.932845] ZenLayoutRewritePass::GetReorderFlags: At conv2d_59/BiasAdd _ZenFusedConv2D, non-Zen output - Shape Shape
+[FWK:I][10.932846] ZenLayoutRewritePass::GetReorderFlags: At conv2d_59/BiasAdd _ZenFusedConv2D, non-Zen input - leaky_re_lu_58/LeakyRelu _FusedConv2D
+[FWK:I][10.932847] ZenLayoutRewritePass::GetReorderFlags: At mul_2 ZenMul, non-Zen output - Round Round
+[FWK:I][10.932850] ZenLayoutRewritePass::GetReorderFlags: At mul_2 ZenMul, non-Zen input - Cast_4 Cast
+[FWK:I][10.932851] ZenLayoutRewritePass::GetReorderFlags: At sub ZenSub, non-Zen input - Cast_3 Cast
+[FWK:I][10.932855] ZenLayoutRewritePass::GetReorderFlags: At truediv_3 ZenMul, non-Zen output - truediv_4 RealDiv
+[FWK:I][10.932856] ZenLayoutRewritePass::GetReorderFlags: At mul_4 ZenMul, non-Zen input - truediv_5 RealDiv
+[FWK:I][10.932867] ZenLayoutRewritePass::GetReorderFlags: At Reshape_2 ZenReshape, non-Zen output - Tile Tile
+[FWK:I][10.932868] ZenLayoutRewritePass::GetReorderFlags: At Reshape_2 ZenReshape, non-Zen input - range Range
+[FWK:I][10.932869] ZenLayoutRewritePass::GetReorderFlags: At Reshape_3 ZenReshape, non-Zen output - Tile_1 Tile
+[FWK:I][10.932870] ZenLayoutRewritePass::GetReorderFlags: At Reshape_3 ZenReshape, non-Zen input - range_1 Range
+[FWK:I][10.932871] ZenLayoutRewritePass::GetReorderFlags: At Reshape_1 ZenReshape, non-Zen output - strided_slice_8 StridedSlice
+[FWK:I][10.932873] ZenLayoutRewritePass::GetReorderFlags: At Reshape_1 ZenReshape, non-Zen input - Reshape_1/shape Pack
+[FWK:I][10.932878] ZenLayoutRewritePass::GetReorderFlags: At add ZenAddV2, non-Zen output - truediv RealDiv
+[FWK:I][10.932879] ZenLayoutRewritePass::GetReorderFlags: At add ZenAddV2, non-Zen input - Cast Cast
+[FWK:I][10.932881] ZenLayoutRewritePass::GetReorderFlags: At sub_1 ZenSub, non-Zen input - strided_slice_14 StridedSlice
+[FWK:I][10.932882] ZenLayoutRewritePass::GetReorderFlags: At mul_3 ZenMul, non-Zen input - truediv_5 RealDiv
+[FWK:I][10.932883] ZenLayoutRewritePass::GetReorderFlags: At mul_1 ZenMul, non-Zen output - truediv_1 RealDiv
+[FWK:I][10.932884] ZenLayoutRewritePass::GetReorderFlags: At mul_1 ZenMul, non-Zen input - Exp Exp
+[FWK:I][10.932886] ZenLayoutRewritePass::GetReorderFlags: At truediv_6 ZenMul, non-Zen input - strided_slice_15 StridedSlice
+[FWK:I][10.932887] ZenLayoutRewritePass::GetReorderFlags: At sub_2 ZenSub, non-Zen output - strided_slice_16 StridedSlice
+[FWK:I][10.932889] ZenLayoutRewritePass::GetReorderFlags: At add_1 ZenAddV2, non-Zen output - strided_slice_18 StridedSlice
+[FWK:I][10.932890] ZenLayoutRewritePass::GetReorderFlags: At concat_1 ZenConcatV2, non-Zen input - strided_slice_16 StridedSlice
+[FWK:I][10.932892] ZenLayoutRewritePass::GetReorderFlags: At mul_6 ZenMul, non-Zen input - Sigmoid_1 Sigmoid
+[FWK:I][10.932894] ZenLayoutRewritePass::GetReorderFlags: At concatenate_1/concat ZenConcatV2, non-Zen output - leaky_re_lu_60/LeakyRelu _FusedConv2D
+[FWK:I][10.932895] ZenLayoutRewritePass::GetReorderFlags: At concatenate_1/concat ZenConcatV2, non-Zen input - up_sampling2d_1/ResizeNearestNeighbor ResizeNearestNeighbor
+[FWK:I][10.932896] ZenLayoutRewritePass::GetReorderFlags: At conv2d_67/BiasAdd _ZenFusedConv2D, non-Zen output - Shape_2 Shape
+[FWK:I][10.932897] ZenLayoutRewritePass::GetReorderFlags: At conv2d_67/BiasAdd _ZenFusedConv2D, non-Zen input - leaky_re_lu_65/LeakyRelu _FusedConv2D
+[FWK:I][10.932898] ZenLayoutRewritePass::GetReorderFlags: At Reshape_8 ZenReshape, non-Zen output - Tile_2 Tile
+[FWK:I][10.932899] ZenLayoutRewritePass::GetReorderFlags: At Reshape_8 ZenReshape, non-Zen input - range_2 Range
+[FWK:I][10.932900] ZenLayoutRewritePass::GetReorderFlags: At Reshape_9 ZenReshape, non-Zen output - Tile_3 Tile
+[FWK:I][10.932901] ZenLayoutRewritePass::GetReorderFlags: At Reshape_9 ZenReshape, non-Zen input - range_3 Range
+[FWK:I][10.932903] ZenLayoutRewritePass::GetReorderFlags: At Reshape_7 ZenReshape, non-Zen output - strided_slice_27 StridedSlice
+[FWK:I][10.932904] ZenLayoutRewritePass::GetReorderFlags: At Reshape_7 ZenReshape, non-Zen input - Reshape_7/shape Pack
+[FWK:I][10.932905] ZenLayoutRewritePass::GetReorderFlags: At add_2 ZenAddV2, non-Zen output - truediv_8 RealDiv
+[FWK:I][10.932907] ZenLayoutRewritePass::GetReorderFlags: At add_2 ZenAddV2, non-Zen input - Cast_5 Cast
+[FWK:I][10.932910] ZenLayoutRewritePass::GetReorderFlags: At sub_4 ZenSub, non-Zen input - strided_slice_33 StridedSlice
+[FWK:I][10.932911] ZenLayoutRewritePass::GetReorderFlags: At mul_9 ZenMul, non-Zen input - truediv_5 RealDiv
+[FWK:I][10.932914] ZenLayoutRewritePass::GetReorderFlags: At mul_7 ZenMul, non-Zen output - truediv_9 RealDiv
+[FWK:I][10.932915] ZenLayoutRewritePass::GetReorderFlags: At mul_7 ZenMul, non-Zen input - Exp_1 Exp
+[FWK:I][10.932917] ZenLayoutRewritePass::GetReorderFlags: At truediv_14 ZenMul, non-Zen input - strided_slice_34 StridedSlice
+[FWK:I][10.932917] ZenLayoutRewritePass::GetReorderFlags: At sub_5 ZenSub, non-Zen output - strided_slice_35 StridedSlice
+[FWK:I][10.932919] ZenLayoutRewritePass::GetReorderFlags: At add_3 ZenAddV2, non-Zen output - strided_slice_37 StridedSlice
+[FWK:I][10.932920] ZenLayoutRewritePass::GetReorderFlags: At concat_4 ZenConcatV2, non-Zen input - strided_slice_35 StridedSlice
+[FWK:I][10.932922] ZenLayoutRewritePass::GetReorderFlags: At mul_12 ZenMul, non-Zen input - Sigmoid_4 Sigmoid
+[FWK:I][10.932923] ZenLayoutRewritePass::GetReorderFlags: At concatenate_2/concat ZenConcatV2, non-Zen output - leaky_re_lu_67/LeakyRelu _FusedConv2D
+[FWK:I][10.932924] ZenLayoutRewritePass::GetReor2023-05-02 16:02:41.481223: I tensorflow/core/util/dump_graph.cc:206] Dumped Graph to ./ZENDNN_after_rewrite_1.pbtxt
+============PERFORMANCE RESULTS======================
+Throughput : 27.800780012935006
+=====================================================
+derFlags: At concatenate_2/concat ZenConcatV2, non-Zen input - up_sampling2d_2/ResizeNearestNeighbor ResizeNearestNeighbor
+[FWK:I][10.932929] ZenLayoutRewritePass::GetReorderFlags: At conv2d_75/BiasAdd _ZenFusedConv2D, non-Zen output - Shape_3 Shape
+[FWK:I][10.932930] ZenLayoutRewritePass::GetReorderFlags: At conv2d_75/BiasAdd _ZenFusedConv2D, non-Zen input - leaky_re_lu_72/LeakyRelu _FusedConv2D
+[FWK:I][10.932931] ZenLayoutRewritePass::GetReorderFlags: At Reshape_14 ZenReshape, non-Zen output - Tile_4 Tile
+[FWK:I][10.932932] ZenLayoutRewritePass::GetReorderFlags: At Reshape_14 ZenReshape, non-Zen input - range_4 Range
+[FWK:I][10.932933] ZenLayoutRewritePass::GetReorderFlags: At Reshape_15 ZenReshape, non-Zen output - Tile_5 Tile
+[FWK:I][10.932934] ZenLayoutRewritePass::GetReorderFlags: At Reshape_15 ZenReshape, non-Zen input - range_5 Range
+[FWK:I][10.932935] ZenLayoutRewritePass::GetReorderFlags: At Reshape_13 ZenReshape, non-Zen output - strided_slice_46 StridedSlice
+[FWK:I][10.932936] ZenLayoutRewritePass::GetReorderFlags: At Reshape_13 ZenReshape, non-Zen input - Reshape_13/shape Pack
+[FWK:I][10.932937] ZenLayoutRewritePass::GetReorderFlags: At add_4 ZenAddV2, non-Zen output - truediv_16 RealDiv
+[FWK:I][10.932938] ZenLayoutRewritePass::GetReorderFlags: At add_4 ZenAddV2, non-Zen input - Cast_10 Cast
+[FWK:I][10.932939] ZenLayoutRewritePass::GetReorderFlags: At sub_7 ZenSub, non-Zen input - strided_slice_52 StridedSlice
+[FWK:I][10.932941] ZenLayoutRewritePass::GetReorderFlags: At mul_15 ZenMul, non-Zen input - truediv_5 RealDiv
+[FWK:I][10.932942] ZenLayoutRewritePass::GetReorderFlags: At mul_13 ZenMul, non-Zen output - truediv_17 RealDiv
+[FWK:I][10.932943] ZenLayoutRewritePass::GetReorderFlags: At mul_13 ZenMul, non-Zen input - Exp_2 Exp
+[FWK:I][10.932944] ZenLayoutRewritePass::GetReorderFlags: At truediv_22 ZenMul, non-Zen input - strided_slice_53 StridedSlice
+[FWK:I][10.932945] ZenLayoutRewritePass::GetReorderFlags: At sub_8 ZenSub, non-Zen output - strided_slice_54 StridedSlice
+[FWK:I][10.932946] ZenLayoutRewritePass::GetReorderFlags: At add_5 ZenAddV2, non-Zen output - strided_slice_56 StridedSlice
+[FWK:I][10.932948] ZenLayoutRewritePass::GetReorderFlags: At concat_7 ZenConcatV2, non-Zen input - strided_slice_54 StridedSlice
+[FWK:I][10.932949] ZenLayoutRewritePass::GetReorderFlags: At concat_9 ZenConcatV2, non-Zen output - boolean_mask/Shape_1 Shape
+[FWK:I][10.932951] ZenLayoutRewritePass::GetReorderFlags: At boolean_mask/Reshape ZenReshape, non-Zen output - boolean_mask_22/GatherV2 GatherV2
+[FWK:I][10.932952] ZenLayoutRewritePass::GetReorderFlags: At boolean_mask/Reshape ZenReshape, non-Zen input - boolean_mask/concat ConcatV2
+[FWK:I][10.932953] ZenLayoutRewritePass::GetReorderFlags: At mul_18 ZenMul, non-Zen input - Sigmoid_7 Sigmoid
+[FWK:I][10.932954] ZenLayoutRewritePass::GetReorderFlags: At concat_10 ZenConcatV2, non-Zen output - strided_slice_113 StridedSlice
+[FWK:I][10.932956] ZenLayoutRewritePass::GetReorderFlags: At concat_11 ZenConcatV2, non-Zen output - _retval_concat_11_0_0 _Retval
+[FWK:I][10.932957] ZenLayoutRewritePass::GetReorderFlags: At concat_11 ZenConcatV2, non-Zen input - GatherV2_38 GatherV2
+[FWK:I][10.932958] ZenLayoutRewritePass::GetReorderFlags: At concat_12 ZenConcatV2, non-Zen output - _retval_concat_12_0_1 _Retval
+[FWK:I][10.932959] ZenLayoutRewritePass::GetReorderFlags: At concat_12 ZenConcatV2, non-Zen input - GatherV2_27 GatherV2
+[FWK:I][10.933015] ZenLayoutRewritePass::AddReorderAttrs: Node concat_2 ZenConcatV2 updated reorders to 
